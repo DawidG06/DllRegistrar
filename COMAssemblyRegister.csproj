@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DB660BAF-2308-4B53-A6FD-52807C4F1B15}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>COMAssemblyRegister</RootNamespace>
+    <RootNamespace>DllRegistrar</RootNamespace>
     <AssemblyName>DllRegistrar</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -72,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

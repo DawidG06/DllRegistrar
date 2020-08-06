@@ -1,4 +1,4 @@
-﻿namespace COMAssemblyRegister
+﻿namespace DllRegistrar
 {
     partial class Form1
     {

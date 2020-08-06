@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace COMAssemblyRegister
+namespace DllRegistrar
 {
     public static class Extensions
     {

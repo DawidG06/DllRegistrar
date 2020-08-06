@@ -9,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace COMAssemblyRegister
+namespace DllRegistrar
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            
             Regasm.OutputDataReceiverEvent += UpdateLabel;
 
             foreach (string path in Regasm.GetPaths(false))
@@ -88,7 +89,7 @@ namespace COMAssemblyRegister
 
                 var paths = label_dllPaths.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var path in paths)
-                    Regasm.Register(comboBox_regasmPaths.SelectedItem.ToString(), path);
+                    Regasm.Unregister(comboBox_regasmPaths.SelectedItem.ToString(), path);
             }
             else
             {
