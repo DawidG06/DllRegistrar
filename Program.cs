@@ -17,7 +17,7 @@ namespace DllRegistrar
         [STAThread]
         static void Main()
         {
-            if (Environment.GetCommandLineArgs().Length > 0)
+            if (Environment.GetCommandLineArgs().Length > 1)
             {
                 AttachConsole(ATTACH_PARENT_PROCESS);
                 Console.WriteLine();
@@ -51,7 +51,7 @@ namespace DllRegistrar
             Console.WriteLine("---=== DllRegistrar ===---");
             switch (command)
             {
-                case "-r": //register
+                case "-r": // register
                     if (string.IsNullOrEmpty(bestRgsm))
                         Console.WriteLine("Not found best RegAsm.");
                     else
@@ -61,7 +61,7 @@ namespace DllRegistrar
                     }
                     break;
 
-                case "-u": //unregister
+                case "-u": // unregister
                     if (string.IsNullOrEmpty(bestRgsm))
                         Console.WriteLine("Not found best RegAsm.");
                     else
@@ -71,7 +71,7 @@ namespace DllRegistrar
                     }
                     break;
 
-                case "-h": //help
+                case "-h": // help
                     #region cmd help
                     Console.WriteLine();
                     Console.WriteLine("-r Specifies dll to registration.");
