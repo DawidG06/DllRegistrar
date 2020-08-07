@@ -40,6 +40,18 @@ namespace DllRegistrar
             return regasmPaths;
         }
 
+        public static string FindBestRegasm(List<string> regasmPaths)
+        {
+            foreach (var item in regasmPaths)
+            {
+                if (item.ToString().Contains("v4.0"))
+                {
+                    return item;
+                }
+            }
+            return "";
+        }
+
         public static void Register(string regasmPath, string dllPath)
         {
             menageRegasm(RegasmOperation.Register, regasmPath, dllPath);
@@ -54,9 +66,9 @@ namespace DllRegistrar
         {
             string arg = "";
             if (regasmOperation == RegasmOperation.Register)
-                arg += dllPath.WrapTo("\"");
+                arg += dllPath.WrapIn("\"");
             else if (regasmOperation == RegasmOperation.Unregister)
-                arg += string.Concat("/unregister", " ", dllPath.WrapTo("\""));
+                arg += string.Concat("/unregister", " ", dllPath.WrapIn("\""));
 
             Process proc = new Process();
             proc.StartInfo.FileName = regasmPath;

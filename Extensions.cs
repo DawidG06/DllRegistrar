@@ -7,7 +7,7 @@ namespace DllRegistrar
 {
     public static class Extensions
     {
-        public static string WrapTo(this string word, string textBeforeAndAfter)
+        public static string WrapIn(this string word, string textBeforeAndAfter)
         {
             string result = string.Concat(textBeforeAndAfter, word, textBeforeAndAfter);
             return result;

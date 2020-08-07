@@ -16,7 +16,7 @@ namespace DllRegistrar
         public Form1()
         {
             InitializeComponent();
-            
+
             Regasm.OutputDataReceiverEvent += UpdateLabel;
 
             foreach (string path in Regasm.GetPaths(false))
@@ -24,15 +24,19 @@ namespace DllRegistrar
             foreach (string path in Regasm.GetPaths(true))
                 comboBox_regasmPaths.Items.Add(path);
 
-            foreach (var item in comboBox_regasmPaths.Items)
+            List<string> regasmPaths = new List<string>();
+            foreach (var path in comboBox_regasmPaths.Items)
+                regasmPaths.Add(path.ToString());
+
+            string bestRgsm = Regasm.FindBestRegasm(regasmPaths);
+            if(!string.IsNullOrEmpty(bestRgsm))
             {
-                if (item.ToString().Contains("v4.0"))
-                {
-                    comboBox_regasmPaths.SelectedItem = item;
-                    break;
-                }
-            }            
+                comboBox_regasmPaths.SelectedItem = bestRgsm;
+            }
+            
         }
+        
+
 
         private void UpdateLabel(string text)
         {
@@ -46,11 +50,11 @@ namespace DllRegistrar
             label_dllPaths.Text = "";
             label_dllPaths.TextAlign = ContentAlignment.TopLeft;
 
-            foreach(var file in files)
+            foreach (var file in files)
             {
                 label_dllPaths.Text += file + Environment.NewLine;
             }
-            
+
         }
 
         private void label_dllPaths_DragEnter(object sender, DragEventArgs e)
@@ -67,10 +71,10 @@ namespace DllRegistrar
 
         private void button_Register_Click(object sender, EventArgs e)
         {
-            if(dllPathsAreOk())
+            if (dllPathsAreOk())
             {
                 textBox_regasmOutput.Clear();
-                
+
                 var paths = label_dllPaths.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var path in paths)
                     Regasm.Register(comboBox_regasmPaths.SelectedItem.ToString(), path);
@@ -109,7 +113,7 @@ namespace DllRegistrar
             return true;
         }
 
-        
+
         private void label_dllPaths_Click(object sender, EventArgs e)
         {
             selectDllsDialog();
@@ -135,6 +139,6 @@ namespace DllRegistrar
             }
         }
 
-       
+
     }
 }
