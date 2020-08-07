@@ -17,14 +17,7 @@ namespace DllRegistrar
         [STAThread]
         static void Main()
         {
-            if (Environment.GetCommandLineArgs().Length > 2)
-            {
-                AttachConsole(ATTACH_PARENT_PROCESS);
-                Console.WriteLine();
-                processArguments();
-                SendKeys.SendWait("{ENTER}");
-            }
-            else if(Environment.GetCommandLineArgs().Length > 0)
+            if (Environment.GetCommandLineArgs().Length > 0)
             {
                 AttachConsole(ATTACH_PARENT_PROCESS);
                 Console.WriteLine();
@@ -37,9 +30,8 @@ namespace DllRegistrar
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
             }
-
-
         }
+        
 
         private static void processArguments()
         {
